@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, send_file
 import qrcode
-import os
+from io import BytesIO
 
 app = Flask(__name__)
 
@@ -15,11 +15,12 @@ def generate():
     url = request.form['url']
     qr_img = qrcode.make(url)
 
-    # Save the QR code image
-    qr_img_path = 'qr.png'
-    qr_img.save(qr_img_path)
+    # Use BytesIO to create an in-memory image
+    img_stream = BytesIO()
+    qr_img.save(img_stream, format='PNG')
+    img_stream.seek(0)  # Move the pointer to the start of the stream
 
-    return send_file(qr_img_path, as_attachment=True)
+    return send_file(img_stream, as_attachment=True, download_name='qr.png', mimetype='image/png')
 
 if __name__ == '__main__':
     app.run(debug=True)
