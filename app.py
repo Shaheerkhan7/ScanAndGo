@@ -11,7 +11,7 @@ def home():
     return render_template("index.html")
 
 
-# Route to generate QR code for URL
+# Route to generate QR code
 @app.route("/generate", methods=["POST"])
 def generate():
     url = request.form["url"]
@@ -37,17 +37,17 @@ def generate_vcard():
     title = request.form["title"]
 
     # Create a vCard string
-    vcard_data = f"""
-                    BEGIN:VCARD
-                    VERSION:3.0
-                    N:{surname};{name}
-                    FN:{name} {surname}
-                    TEL:{telephone}
-                    ADR:;;{location}
-                    ORG:{company}
-                    TITLE:{title}
-                    END:VCARD
-                    """
+    vcard_data = (
+        "BEGIN:VCARD\n"
+        "VERSION:3.0\n"
+        f"N:{surname};{name}\n"
+        f"FN:{name} {surname}\n"
+        f"TEL;TYPE=CELL:{telephone}\n"  
+        f"ADR;TYPE=HOME:;;{location}\n"  
+        f"ORG:{company}\n"
+        f"TITLE:{title}\n"
+        "END:VCARD"
+    )
 
     # Generate QR code from vCard data
     qr_img = qrcode.make(vcard_data)
