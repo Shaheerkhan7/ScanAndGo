@@ -50,14 +50,219 @@
             background-color: #bd5a29;
             color: #ffffff;
         }
+
+
+        /* buutton css */
+        /* .btn-4 {
+            scale: 0.5;
+            --width: 160px;
+            --height: 64px;
+            --tooltip-height: 40px;
+            --tooltip-width: 110px;
+            --gap-between-tooltip-to-button: 18px;
+            --button-color: #000;
+            --tooltip-color: #fff;
+            width: var(--width);
+            height: var(--height);
+            background: var(--button-color);
+            position: absolute;
+            text-align: center;
+            border-radius: 32px;
+            font-family: inherit;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn-4::before {
+            position: absolute;
+            content: attr(data-tooltip);
+            width: var(--tooltip-width);
+            height: var(--tooltip-height);
+            background-color: var(--tooltip-color);
+            font-size: 16px;
+            color: #111;
+            border-radius: 6px;
+            line-height: var(--tooltip-height);
+            bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+            left: calc(50% - var(--tooltip-width) / 2);
+        } */
+        .btn-4 {
+            scale: 0.5;
+            width: 200px;
+            height: 64px;
+            background: #000;
+            text-align: center;
+            border-radius: 32px;
+            font-family: inherit;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;
+            /* Changed to relative */
+        }
+
+        .btn-4::before {
+            position: absolute;
+            /* content: attr(data-tooltip); */
+            width: 110px;
+            height: 40px;
+            background-color: #fff;
+            font-size: 16px;
+            color: #111;
+            border-radius: 6px;
+            line-height: 40px;
+            bottom: calc(64px + 18px + 10px);
+            /* Adjusted based on button height */
+            left: calc(50% - 55px);
+            /* Center tooltip */
+        }
+
+        .btn-4::after,
+        .btn-4::before {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s;
+        }
+
+        .btn-4 .text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-4 .button-wrapper,
+        .btn-4 .text,
+        .btn-4 .icon {
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            bottom: 0;
+            left: 0;
+            color: #fff;
+        }
+
+        .btn-4 .text {
+            top: 0;
+        }
+
+        .btn-4 .text,
+        .btn-4 .icon {
+            transition: top 0.5s;
+        }
+
+        .btn-4 .icon {
+            color: #fff;
+            top: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-4 .icon svg {
+            width: 27px;
+            height: 25px;
+        }
+
+        .btn-4:hover {
+            background: #bd5a29;
+        }
+
+        .btn-4:hover .text {
+            top: -100%;
+        }
+
+        .btn-4:hover .icon {
+            top: 0;
+        }
+
+        .btn-4:hover:before,
+        .btn-4:hover:after {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .btn-4:hover:after {
+            bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+        }
+
+        .btn-4:hover:before {
+            bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+        }
+
+        /* Reset Button CSS */
+        .btn-5 {
+            scale: 0.5;
+            width: 160px;
+            /* Same width as btn-4 */
+            height: 64px;
+            background: #000;
+            /* Same background color */
+            text-align: center;
+            border-radius: 32px;
+            font-family: inherit;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s;
+            position: relative;
+            /* Changed to relative */
+        }
+
+        .btn-5 .button-wrapper,
+        .btn-5 .text,
+        .btn-5 .icon {
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            color: #fff;
+        }
+
+        .btn-5 .text {
+            top: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: top 0.5s;
+        }
+
+        .btn-5 .icon {
+            color: #fff;
+            top: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: top 0.5s;
+        }
+
+        .btn-5 .icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .btn-5:hover {
+            background: #8f44fd;
+        }
+
+        .btn-5:hover .text {
+            top: -100%;
+        }
+
+        .btn-5:hover .icon {
+            top: 0;
+        }
     </style>
 </head>
+
+
 
 <body>
     <header>
         <nav class="navbar navbar-expand-lg header-color p-2 ">
             <div class="container">
-                <a class="navbar-brand text-white" href="#">Scan and Go</a>
+                <a class="navbar-brand text-white" style="font-weight: 800;" href="#">Scan and Go</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -125,15 +330,50 @@
                         <div class="card shadow-sm" style="max-width: 24rem; margin: auto;">
                             <div class="card-body">
                                 <h5 class="card-title">Generate QR</h5>
-                                <h6 class="card-subtitle mb-3 text-muted">Enter details to generate</h6>
+                                <h6 class="card-subtitle mb-3 text-muted">Add details to generate</h6>
                                 <form action="/generate" method="post">
                                     <div class="form-group">
                                         <label for="url">Enter URL:</label>
-                                        <input type="text" class="form-control" id="url" name="url" required="">
+                                        <input type="text" class="form-control" id="url" name="url" required>
                                     </div>
-                                    <div class="d-flex justify-content-between mt-4">
+                                    <!-- <div class="d-flex justify-content-between mt-4">
                                         <button type="reset" class="btn btn-outline-secondary">Reset</button>
                                         <button type="submit" class="btn btn-primary">Generate</button>
+                                    </div> -->
+                                    <div class="col-12">
+                                        <div class="d-flex justify-content-between mt-4">
+                                            <button class="btn-4" type="reset">
+                                                <div class="button-wrapper">
+                                                    <div class="text">Reset</div>
+                                                    <span class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-arrow-clockwise"
+                                                            viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+                                                            <path
+                                                                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </button>
+                                            <button class="btn-4" type="submit">
+                                                <div class="button-wrapper">
+                                                    <div class="text">Generate</div>
+                                                    <span class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                                            role="img" width="2em" height="2em"
+                                                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                                            <path fill="none" stroke="currentColor"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17">
+                                                            </path>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </button>
+                                        </div>
                                     </div>
                                 </form>
                             </div>
@@ -143,57 +383,85 @@
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="card shadow-sm" style="max-width: 24rem; margin: auto;">
                             <div class="card-body">
-                                <h5 class="card-title">User Information</h5>
-                                <h6 class="card-subtitle mb-3 text-muted">Enter your personal details</h6>
-                                <form action="/generate_vcard" method="POST" class="row g-3 needs-validation"
-                                    novalidate>
+                                <h5 class="card-title">Generate User Contact QR</h5>
+                                <h6 class="card-subtitle mb-3 text-muted">Add details to generate</h6>
+                                <form action="/generate_vcard" method="POST" class="row g-3 needs-validation">
                                     <div class="form-group">
                                         <label for="name">Name:</label>
                                         <input type="text" class="form-control" id="name" name="name" required>
-                                        <div class="invalid-feedback">Please enter your name.</div>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="surname">Surname:</label>
                                         <input type="text" class="form-control" id="surname" name="surname" required>
-                                        <div class="invalid-feedback">Please enter your surname.</div>
+
                                     </div>
                                     <details>
                                         <summary>Contact Info</summary>
                                         <div class="form-group mt-2">
                                             <label for="tele">Telephone:</label>
                                             <input type="tel" class="form-control" id="tele" name="tele" required>
-                                            <div class="invalid-feedback">Please enter your contact number.</div>
+
                                         </div>
                                     </details>
                                     <details>
-                                        <summary>Location:</summary>
+                                        <summary>Add Location Info</summary>
                                         <div class="form-group mt-2">
                                             <label for="location">Location:</label>
                                             <input type="text" class="form-control" id="location" name="location"
                                                 required>
-                                            <div class="invalid-feedback">Please enter your location.</div>
+
                                         </div>
                                     </details>
                                     <details>
-                                        <summary>Company & Title:</summary>
+                                        <summary>Company & Title info</summary>
                                         <div class="form-group mt-2">
                                             <label for="company">Company:</label>
-                                            <input type="text" class="form-control" id="company" name="company"
-                                                required>
-                                            <div class="invalid-feedback">Please enter your company name.</div>
+                                            <input type="text" class="form-control" id="company" name="company">
+
                                         </div>
                                         <div class="form-group mt-2">
                                             <label for="title">Title:</label>
-                                            <input type="text" class="form-control" id="title" name="title" required>
-                                            <div class="invalid-feedback">Please enter your title.</div>
+                                            <input type="text" class="form-control" id="title" name="title">
                                         </div>
                                     </details>
                                     <div class="col-12">
                                         <div class="d-flex justify-content-between mt-4">
-                                            <button type="reset" class="btn btn-outline-secondary">Reset</button>
-                                            <button type="submit" class="btn btn-primary">Generate</button>
+
+                                            <button class="btn-4" type="reset">
+                                                <div class="button-wrapper">
+                                                    <div class="text">Reset</div>
+                                                    <span class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                            fill="currentColor" class="bi bi-arrow-clockwise"
+                                                            viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z" />
+                                                            <path
+                                                                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </button>
+                                            <button class="btn-4" type="submit">
+                                                <div class="button-wrapper">
+                                                    <div class="text">Generate</div>
+                                                    <span class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                                                            role="img" width="2em" height="2em"
+                                                            preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+                                                            <path fill="none" stroke="currentColor"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2"
+                                                                d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17">
+                                                            </path>
+                                                        </svg>
+                                                    </span>
+                                                </div>
+                                            </button>
                                         </div>
                                     </div>
+
                                 </form>
                             </div>
                         </div>
