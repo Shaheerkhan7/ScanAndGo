@@ -19,16 +19,18 @@
             /* Prevent horizontal scrolling */
         }
 
+        .header-color {
+            background-color: #cc5e30;
+            color: #ffffff;
+        }
+
         #hero {
             background: linear-gradient(to right, #ff7e5f, #feb47b);
             width: 100%;
             min-height: 60vh;
             display: flex;
-            /* Use flexbox for centering */
             align-items: center;
-            /* Vertically center content */
             justify-content: center;
-            /* Horizontally center content */
         }
 
         svg {
@@ -41,52 +43,6 @@
             height: auto;
         } */
 
-        .header-color {
-            background-color: #cc5e30;
-            color: #ffffff;
-        }
-
-        footer {
-            background-color: #bd5a29;
-            color: #ffffff;
-        }
-
-
-        /* buutton css */
-        /* .btn-4 {
-            scale: 0.5;
-            --width: 160px;
-            --height: 64px;
-            --tooltip-height: 40px;
-            --tooltip-width: 110px;
-            --gap-between-tooltip-to-button: 18px;
-            --button-color: #000;
-            --tooltip-color: #fff;
-            width: var(--width);
-            height: var(--height);
-            background: var(--button-color);
-            position: absolute;
-            text-align: center;
-            border-radius: 32px;
-            font-family: inherit;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn-4::before {
-            position: absolute;
-            content: attr(data-tooltip);
-            width: var(--tooltip-width);
-            height: var(--tooltip-height);
-            background-color: var(--tooltip-color);
-            font-size: 16px;
-            color: #111;
-            border-radius: 6px;
-            line-height: var(--tooltip-height);
-            bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
-            left: calc(50% - var(--tooltip-width) / 2);
-        } */
         .btn-4 {
             scale: 0.5;
             width: 200px;
@@ -112,10 +68,8 @@
             color: #111;
             border-radius: 6px;
             line-height: 40px;
-            bottom: calc(64px + 18px + 10px);
-            /* Adjusted based on button height */
+            bottom: calc(64px + 18px + 10px);            
             left: calc(50% - 55px);
-            /* Center tooltip */
         }
 
         .btn-4::after,
@@ -191,67 +145,22 @@
             bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
         }
 
-        /* Reset Button CSS */
-        .btn-5 {
-            scale: 0.5;
-            width: 160px;
-            /* Same width as btn-4 */
-            height: 64px;
-            background: #000;
-            /* Same background color */
-            text-align: center;
-            border-radius: 32px;
-            font-family: inherit;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background 0.3s;
-            position: relative;
-            /* Changed to relative */
+        .form-control:focus {
+            border-color: #bd5a29ce;
+            outline: 0;
+            box-shadow: 0 0 0 .25rem #bd5a2926;
         }
 
-        .btn-5 .button-wrapper,
-        .btn-5 .text,
-        .btn-5 .icon {
-            overflow: hidden;
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            left: 0;
-            color: #fff;
+        label {
+            display: inline-block;
+            margin-bottom: 4px;
+            font-style: italic;
+            font-weight: 500;
         }
 
-        .btn-5 .text {
-            top: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: top 0.5s;
-        }
-
-        .btn-5 .icon {
-            color: #fff;
-            top: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: top 0.5s;
-        }
-
-        .btn-5 .icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .btn-5:hover {
-            background: #8f44fd;
-        }
-
-        .btn-5:hover .text {
-            top: -100%;
-        }
-
-        .btn-5:hover .icon {
-            top: 0;
+        footer {
+            background-color: #bd5a29;
+            color: #ffffff;
         }
     </style>
 </head>
@@ -304,7 +213,8 @@
                 <div class="col-lg-6">
                     <h1 class="display-5 fw-bold lh-1 mb-3">Instant QR Creator</h1>
                     <p class="lead" style="text-align: justify;">Welcome to ScanAndGo! Simplify sharing your links with
-                        our easy-to-use generator. Instantly turn any URL into a scannable, customizable QR code and
+                        our easy-to-use generator. Instantly turn any URL or create a contact card into a scannable QR
+                        code and
                         share it with just a click. Perfect for quick access and seamless sharing on the go!</p>
                 </div>
             </div>
@@ -324,13 +234,23 @@
                         <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                             type="button" role="tab" aria-controls="profile" aria-selected="false">vCard</button>
                     </li>
+
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="wifi-tab" data-bs-toggle="tab" data-bs-target="#wifi-tab-pane"
+                            type="button" role="tab" aria-controls="wifi-tab-pane" aria-selected="false">Wifi</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                            data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane"
+                            aria-selected="false">Apps</button>
+                    </li>
                 </ul>
                 <div class="tab-content my-5 p-3" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <div class="card shadow-sm" style="max-width: 24rem; margin: auto;">
                             <div class="card-body">
                                 <h5 class="card-title">Generate QR</h5>
-                                <h6 class="card-subtitle mb-3 text-muted">Add details to generate</h6>
+                                <h6 class="card-subtitle mb-3 text-muted">Add website address to generate</h6>
                                 <form action="/generate" method="post">
                                     <div class="form-group">
                                         <label for="url">Enter URL:</label>
@@ -383,8 +303,8 @@
                     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div class="card shadow-sm" style="max-width: 24rem; margin: auto;">
                             <div class="card-body">
-                                <h5 class="card-title">Generate User Contact QR</h5>
-                                <h6 class="card-subtitle mb-3 text-muted">Add details to generate</h6>
+                                <h5 class="card-title">Generate Contact QR</h5>
+                                <h6 class="card-subtitle mb-3 text-muted">Add user details to generate</h6>
                                 <form action="/generate_vcard" method="POST" class="row g-3 needs-validation">
                                     <div class="form-group">
                                         <label for="name">Name:</label>
@@ -466,6 +386,24 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="tab-pane fade" id="wifi-tab-pane" role="tabpanel" aria-labelledby="wifi-tab"
+                        tabindex="0">
+                        <div class="card shadow-sm" style="max-width: 14rem; margin: auto;">
+                            <div class="card-body d-flex justify-content-center">
+                                <img src="/updateSoon.svg" alt="coming-soon" width="195px" height="180px">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                        tabindex="0">
+                        <div class="card shadow-sm" style="max-width: 14rem; margin: auto;">
+                            <div class="card-body d-flex justify-content-center">
+                                <img src="/updateSoon.svg" alt="coming-soon" width="195px" height="180px">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -481,6 +419,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
